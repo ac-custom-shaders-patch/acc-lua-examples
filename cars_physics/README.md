@@ -1,1 +1,1 @@
-More information and a few short examples are available [here](https://github.com/ac-custom-shaders-patch/acc-extension-config/wiki/Cars-%E2%80%93-Physics-scripts).
+Car physics scripts run in physics thread at physics frequency and can alter car state, apply extra forces and more. More information and a few short examples are available [here](https://github.com/ac-custom-shaders-patch/acc-extension-config/wiki/Cars-%E2%80%93-Physics-scripts).
