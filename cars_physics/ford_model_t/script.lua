@@ -1,3 +1,8 @@
+-- Not doing anything for AIs
+if car.isAIControlled then
+  return nil
+end
+
 local ready = false
 local handbrake = 0
 local throttle = 0
