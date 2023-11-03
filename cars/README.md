@@ -17,3 +17,18 @@ function script.update(dt)
   meshes:setMaterialProperty('uvOffsetX', texOffset)
 end
 ```
+
+### Playing an animation for a second
+
+```lua
+local root = ac.findNodes('luaRoot:yes')
+local progress = 0
+local animation  -- split like that, function passed to `setInterval()` will be able to clear it too
+animation = setInterval(function() 
+  progress = progress + sim.dt
+  root:setAnimation('rpm_startup.ksanim', math.saturate(progress))
+  if progress > 1 then clearInterval(animation) end
+end, 0)
+```
+
+Note: minimum interval for both `setTimeout()` and `setInterval()` is a frame duration (callbacks won’t be called more than once per frame), so passing 0 is a great way to make sure your callback will be called once each frame.
