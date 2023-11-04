@@ -26,7 +26,7 @@ local progress = 0
 local animation  -- split like that, function passed to `setInterval()` will be able to clear it too
 animation = setInterval(function() 
   progress = progress + sim.dt
-  root:setAnimation('rpm_startup.ksanim', math.saturate(progress))
+  root:setAnimation(__dirname..'/rpm_startup.ksanim', math.saturate(progress))
   if progress > 1 then clearInterval(animation) end
 end, 0)
 ```
