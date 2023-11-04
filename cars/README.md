@@ -33,6 +33,27 @@ end, 0)
 
 Note: minimum interval for both `setTimeout()` and `setInterval()` is a frame duration (callbacks won’t be called more than once per frame), so passing 0 is a great way to make sure your callback will be called once each frame.
 
+### Playing animation once when Extra A switch is pressed
+
+local root = ac.findNodes('luaRoot:yes') 
+local progress = -1
+
+function script.update(dt)
+  if car.extraA then
+    -- Kicking off animation
+    if progress == -1 then progress = 0 end
+  elseif progress > 1 then
+    -- Button is released and animation is done: revert back to initial state
+    progress = -1
+  end
+
+  if progress >= 0 then
+    -- If animation is playing, progress further
+    progress = progress + dt
+    root:setAnimation(__dirname..'/my_anim.ksanim', math.min(progress, 1))
+  end
+end
+
 ### Simplest custom needle
 
 ```lua
