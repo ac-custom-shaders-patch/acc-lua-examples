@@ -32,3 +32,27 @@ end, 0)
 ```
 
 Note: minimum interval for both `setTimeout()` and `setInterval()` is a frame duration (callbacks won’t be called more than once per frame), so passing 0 is a great way to make sure your callback will be called once each frame.
+
+### Simplest custom needle
+
+```lua
+local needle = ac.findNodes('MY_ARROW')
+local axis = vec3(0, 0, 1) -- doesn’t have to be here, but not recreating vectors each frame can help with performance
+
+function script.update(dt)
+  needle:setRotation(axis, math.rad(car.speedKmh)) -- simply use speed in km/h as degrees and convert to radians
+end
+```
+
+Of course better needle needs to have boundaries, maybe some lag, all of that, but this is the simplest example.
+
+### Simplest dashboard indicator
+
+```lua
+local indicator = ac.findMeshes('MY_INDICATOR')
+local colorGlowing = rgb(10, 0, 0)
+
+function script.update(dt)
+  indicator:setMaterialProperty('ksEmissive', car.ballast > 0 and colorGlowing or rgb.colors.transparent)
+end
+```
