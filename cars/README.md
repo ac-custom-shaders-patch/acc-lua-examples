@@ -64,3 +64,57 @@ function script.update(dt)
   indicator:setMaterialProperty('ksEmissive', car.ballast > 0 and colorGlowing or rgb.colors.transparent)
 end
 ```
+
+### A mesh button causing car to jump with events
+
+Just a very basic example of car script interacting with car physics script.
+
+```lua
+function script.update(dt)
+  if ac.isMeshClicked('MESH_NAME') then
+    ac.broadcastSharedEvent('JumpingScript:'..car.index, { jumpingForce = 1e5 })
+  end
+end
+```
+
+And a separate physics script, store it in data folder as “script.lua” (extended car physics has to be activated). 
+
+```lua
+ac.onSharedEvent('JumpingScript:'..car.index, function (data)
+  ac.awakeCarPhysics() -- to get the car moving for sure
+  ac.addForce(vec3(), true, vec3(0, data.jumpingForce, 0), true)
+end)
+```
+
+Note that you’d need to have a somewhat unique name for your shared event. You wouldn’t want to use something so that when, for example, a WeatherFX script exchanges data with WeatherFX configuring app, your physics script would make a car jump.
+
+### A mesh button causing car to float with shared structure
+
+Alternative approach using a shared bit of data. It’s a bit trickier to use, but a lot faster if you want to exchange values each frame.
+
+```lua
+local connect = ac.connect({
+  ac.StructItem.key('JumpingScript:'..car.index),
+  floatingForce = ac.StructItem.boolean()
+}, false, ac.SharedNamespace.CarScript)
+
+function script.update(dt)
+  connect.floatingForce = ac.isMeshPressed('MESH_NAME') and 1e4 or 0
+end
+```
+
+Calling `ac.connect()` this way allows two separate scripts to share a common structure, so they can easily and reliably exchange data.
+
+```lua
+local connect = ac.connect({
+  ac.StructItem.key('JumpingScript:'..car.index),
+  jump = ac.StructItem.boolean()
+}, false, ac.SharedNamespace.CarScript)
+
+function script.update(dt)
+  if connect.floatingForce ~= 0 then
+    ac.awakeCarPhysics()
+    ac.addForce(vec3(), true, vec3(0, connect.floatingForce, 0), true)
+  end
+end
+```
