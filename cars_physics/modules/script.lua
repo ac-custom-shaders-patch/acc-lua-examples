@@ -1,6 +1,6 @@
 loadstring(const((function ()
   local files = table.map(ac.getCarDataFiles(car.index), function (v)
-    return v:startsWith('_ext_') and v:endsWith('.lua') and v:sub(1, #v - 4) or nil
+    return v:startsWith('script_') and v:endsWith('.lua') and v:sub(1, #v - 4) or nil
   end)
   local s, u, t = {}, {}, {}
   for i, v in ipairs(files) do
