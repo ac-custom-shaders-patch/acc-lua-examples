@@ -47,7 +47,6 @@ loadstring(const((function ()
       end
     end
   end
-  table.clear(script)
   if #u > 0 then
     s[#s + 1] = 'function script.update(dt)'
     for _, v in ipairs(u) do s[#s + 1] = v end
