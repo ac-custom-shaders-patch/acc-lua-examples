@@ -1,6 +1,6 @@
 # Extra Wheels Axis
 
-<a href="https://gfycat.com/BriskRichIndusriverdolphin"><img src="https://thumbs.gfycat.com/BriskRichIndusriverdolphin-size_restricted.gif"></a>
+https://github.com/ac-custom-shaders-patch/acc-lua-examples/assets/3996502/4f4f7619-c934-4ccc-92bc-c24a817848fb
 
 Currently AC doesn’t allow to add a new axis, but with something like this it can at least be visualized a bit nicer than static wheels.
 
