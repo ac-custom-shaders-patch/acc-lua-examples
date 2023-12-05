@@ -1,6 +1,6 @@
 # Le Mans Start
 
-<a href="https://gfycat.com/MeanHelplessCaecilian"><img src="https://thumbs.gfycat.com/MeanHelplessCaecilian-size_restricted.gif"></a>
+https://github.com/ac-custom-shaders-patch/acc-lua-examples/assets/3996502/493f1fd0-31d0-4bb5-8919-608c8a0ea5c0
 
 Adds some sort of Le Mans start with camera outside and engines off. As soon as race starts, camera pans in into a car, engine starts and controls activate.
 
