@@ -1,6 +1,6 @@
 # Dash Display 8100
 
-<a href="https://gfycat.com/BronzeDeliriousKudu"><img src="https://thumbs.gfycat.com/BronzeDeliriousKudu-size_restricted.gif"></a>
+https://github.com/ac-custom-shaders-patch/acc-lua-examples/assets/3996502/f0c69456-699a-487b-8a36-3081f777ff5a
 
 Recreation of ST8100 Display System with 5 display layers, warnings, peak values, four working and animated switches, Predictive Lap Timer, Corner Speed feature, alarms and some settings.
 
